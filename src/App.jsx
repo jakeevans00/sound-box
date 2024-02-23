@@ -3,6 +3,7 @@ import Hero from "./components/Hero";
 // import { useState } from "react";
 import Oscillator from "./components/Oscillator";
 import Filter from "./components/Filter";
+import Keyboard from "./components/Keyboard";
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
               </div>
             </div>
           </div>
+          <Keyboard />
         </div>
       </div>
     </>
