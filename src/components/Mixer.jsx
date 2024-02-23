@@ -1,7 +1,7 @@
 import Oscillator from "./Oscillator";
 import PropTypes from "prop-types";
 
-const Mixer = ({ setPlay, setPause, changeFreq, freq }) => {
+const Mixer = ({ setPlay, setPause, settings, change, changeType }) => {
   // const [isPlaying, setIsPlaying] = useState(null);
 
   // for legacy browsers
@@ -30,20 +30,24 @@ const Mixer = ({ setPlay, setPause, changeFreq, freq }) => {
               <li>
                 <div className="flex gap-2">
                   <button
-                    className="border-4 border-amber-900 p-2 rounded-lg bg-black-900 text-white hover:bg-gray-800 hover:cursor-pointer"
+                    className="border-4 border-amber-900 px-4 rounded-lg bg-black-900 text-white hover:bg-gray-800 hover:cursor-pointer"
                     onClick={setPlay}
                   >
                     Start
                   </button>
                   <button
-                    className="border-4 border-amber-900 p-2 rounded-lg bg-black-900 text-white hover:bg-red-900 hover:cursor-pointer"
+                    className="border-4 border-amber-900 px-4 rounded-lg bg-black-900 text-white hover:bg-red-900 hover:cursor-pointer"
                     onClick={setPause}
                   >
                     Stop
                   </button>
                 </div>
 
-                <Oscillator changeFreq={changeFreq} freq={freq} />
+                <Oscillator
+                  settings={settings}
+                  change={change}
+                  changeType={changeType}
+                />
               </li>
             </ul>
           </div>
@@ -56,8 +60,9 @@ const Mixer = ({ setPlay, setPause, changeFreq, freq }) => {
 Mixer.propTypes = {
   setPlay: PropTypes.func.isRequired,
   setPause: PropTypes.func.isRequired,
-  changeFreq: PropTypes.func.isRequired,
-  freq: PropTypes.number.isRequired,
+  settings: PropTypes.object.isRequired,
+  change: PropTypes.func.isRequired,
+  changeType: PropTypes.func.isRequired,
 };
 
 export default Mixer;
