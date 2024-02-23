@@ -1,21 +1,21 @@
 import { useEffect } from "react";
 import QwertyHancock from "../utils/qwerty";
-import { useContext, useState } from "react";
+import react from "react";
 import { CTX } from "../utils/Store";
 
 const Keyboard = () => {
-  const [appState, updateState] = useContext(CTX);
+  const [, updateState] = react.useContext(CTX);
 
   useEffect(() => {
     // eslint-disable-next-line no-unused-vars
     const keyboard = new QwertyHancock({
       id: "keyboard",
       width: 449,
-      height: 150,
+      height: 110,
       octaves: 2,
       startNote: "C4",
-      whiteNotesColour: "white",
-      blackNotesColour: "black",
+      whiteKeyColour: "#934B00",
+      blackKeyColour: "#291F1E",
       borderColour: "black",
       activeColour: "gold",
       hoverColour: "orange",

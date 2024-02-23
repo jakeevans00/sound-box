@@ -1,12 +1,7 @@
 export default class Osc {
   constructor(actx, type, frequency, detune, envelope, connection) {
     this.actx = actx;
-    this.envelope = envelope || {
-      attack: 0.1,
-      decay: 0.1,
-      sustain: 0.6,
-      release: 0.1,
-    };
+    this.envelope = envelope;
 
     this.osc = this.actx.createOscillator();
     this.osc.frequency.value = frequency;
@@ -34,7 +29,6 @@ export default class Osc {
     );
   }
   stop() {
-    console.log("stopping");
     let { currentTime } = this.actx;
     this.gateGain.gain.cancelScheduledValues(currentTime);
     this.gateGain.gain.setTargetAtTime(

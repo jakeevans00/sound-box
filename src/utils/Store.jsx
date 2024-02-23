@@ -7,6 +7,7 @@ let out = actx.destination;
 
 let osc1 = actx.createOscillator();
 let gain1 = actx.createGain();
+gain1.gain.value = 0.1;
 let filter = actx.createBiquadFilter();
 
 osc1.connect(gain1);
@@ -19,29 +20,25 @@ export { CTX };
 let nodes = [];
 
 function reducer(state, action) {
-  let { id, value, note, frequency } = action.payload || {};
+  let { id, value, frequency } = action.payload || {};
 
   switch (action.type) {
-    case "START_OSC1":
-      console.log("in start");
-      osc1.start();
-      return { ...state };
-    case "STOP_OSC1":
-      console.log("in stop");
-      osc1.stop();
-      return { ...state };
     case "OSC_PLAY_NOTE":
       // eslint-disable-next-line no-case-declarations
-      let newOsc = new Osc(actx, "sawtooth", frequency, 0, null, gain1);
+      let newOsc = new Osc(
+        actx,
+        state.osc1Settings.type,
+        frequency,
+        state.osc1Settings.detune,
+        state.envelope,
+        gain1
+      );
       nodes.push(newOsc);
-      console.log("play sound", note, frequency);
-      console.log("nodes", nodes);
       return { ...state };
     case "OSC_STOP_NOTE":
       // eslint-disable-next-line no-case-declarations
       let newNodes = [];
       nodes.forEach((node) => {
-        console.log("node frequency", node.osc.frequency.value, frequency);
         if (Math.round(node.osc.frequency.value) === Math.round(frequency)) {
           node.stop();
         } else {
@@ -49,7 +46,6 @@ function reducer(state, action) {
         }
       });
       nodes = newNodes;
-      console.log("stop sound", note, frequency);
       return { ...state };
     case "CHANGE_OSC1":
       osc1[id].value = value;
@@ -68,6 +64,11 @@ function reducer(state, action) {
       return {
         ...state,
         filterSettings: { ...state.filterSettings, type: id },
+      };
+    case "CHANGE_ADSR":
+      return {
+        ...state,
+        envelope: { ...state.envelope, [id]: parseFloat(value) },
       };
     default:
       console.log("Reducer error. action: ", action);
@@ -88,6 +89,12 @@ export default function Store(props) {
       Q: filter.Q.value,
       gain: filter.gain.value,
       type: filter.type,
+    },
+    envelope: {
+      attack: 0.1,
+      decay: 0.1,
+      sustain: 0.6,
+      release: 0.1,
     },
   });
   return <CTX.Provider value={stateHook}>{props.children}</CTX.Provider>;

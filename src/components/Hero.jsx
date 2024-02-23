@@ -7,9 +7,6 @@ const Hero = () => {
           <p className="text-gray-400">
             unshackled sound design is just a click away👇
           </p>
-          <p className="text-red-500">
-            NOTE: Currently, web audio breaks site when you hit stop!
-          </p>
         </div>
       </div>
     </>

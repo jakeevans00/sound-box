@@ -69,7 +69,7 @@ const Filter = () => {
           id="lowpass"
           onClick={changeType}
           className={`border-2 border-white rounded-sm p-1 ${
-            type === "lowpass" && "bg-amber-600"
+            type === "lowpass" && "bg-amber-800"
           }`}
         >
           Lowpass
@@ -78,7 +78,7 @@ const Filter = () => {
           id="highpass"
           onClick={changeType}
           className={`border-2 border-white rounded-sm p-1 ${
-            type === "highpass" && "bg-amber-600"
+            type === "highpass" && "bg-amber-800"
           }`}
         >
           Highpass
@@ -87,7 +87,7 @@ const Filter = () => {
           id="notch"
           onClick={changeType}
           className={`border-2 border-white rounded-sm p-1 ${
-            type === "notch" && "bg-amber-600"
+            type === "notch" && "bg-amber-800"
           }`}
         >
           Notch
@@ -96,7 +96,7 @@ const Filter = () => {
           id="lowshelf"
           onClick={changeType}
           className={`border-2 border-white rounded-sm p-1 ${
-            type === "lowshelf" && "bg-amber-600"
+            type === "lowshelf" && "bg-amber-800"
           }`}
         >
           Lowshelf
@@ -105,7 +105,7 @@ const Filter = () => {
           id="highshelf"
           onClick={changeType}
           className={`border-2 border-white rounded-sm p-1 ${
-            type === "highshelf" && "bg-amber-600"
+            type === "highshelf" && "bg-amber-800"
           }`}
         >
           HighShelf
