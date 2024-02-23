@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Osc from "./Osc";
 
 let actx = new AudioContext();
 let out = actx.destination;
@@ -15,9 +16,10 @@ filter.connect(out);
 const CTX = React.createContext("");
 export { CTX };
 
+let nodes = [];
+
 function reducer(state, action) {
-  let { id, value } = action.payload || {};
-  console.log("in reducer", action);
+  let { id, value, note, frequency } = action.payload || {};
 
   switch (action.type) {
     case "START_OSC1":
@@ -28,9 +30,29 @@ function reducer(state, action) {
       console.log("in stop");
       osc1.stop();
       return { ...state };
+    case "OSC_PLAY_NOTE":
+      // eslint-disable-next-line no-case-declarations
+      let newOsc = new Osc(actx, "sawtooth", frequency, 0, null, gain1);
+      nodes.push(newOsc);
+      console.log("play sound", note, frequency);
+      console.log("nodes", nodes);
+      return { ...state };
+    case "OSC_STOP_NOTE":
+      // eslint-disable-next-line no-case-declarations
+      let newNodes = [];
+      nodes.forEach((node) => {
+        console.log("node frequency", node.osc.frequency.value, frequency);
+        if (Math.round(node.osc.frequency.value) === Math.round(frequency)) {
+          node.stop();
+        } else {
+          newNodes.push(node);
+        }
+      });
+      nodes = newNodes;
+      console.log("stop sound", note, frequency);
+      return { ...state };
     case "CHANGE_OSC1":
       osc1[id].value = value;
-      console.log("new osc1 value", osc1[id].value);
       return { ...state, osc1Settings: { ...state.osc1Settings, [id]: value } };
     case "CHANGE_OSC1_TYPE":
       osc1.type = id;
