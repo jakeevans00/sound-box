@@ -91,10 +91,10 @@ export default function Store(props) {
       type: filter.type,
     },
     envelope: {
-      attack: 0.1,
+      attack: 0.2,
       decay: 0.1,
       sustain: 0.6,
-      release: 0.1,
+      release: 0.3,
     },
   });
   return <CTX.Provider value={stateHook}>{props.children}</CTX.Provider>;
