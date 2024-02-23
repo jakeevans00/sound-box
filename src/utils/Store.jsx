@@ -92,7 +92,7 @@ export default function Store(props) {
     },
     envelope: {
       attack: 0,
-      decay: 0.1,
+      decay: 0.8,
       sustain: 0.3,
       release: 0.5,
     },

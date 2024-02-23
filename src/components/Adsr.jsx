@@ -3,8 +3,8 @@ import { CTX } from "../utils/Store";
 
 const Adsr = () => {
   let [state, dispatch] = useContext(CTX);
-  let { attack, delay, sustain, release } = state.envelope;
-  console.log(state.envelope);
+  let { attack, decay, sustain, release } = state.envelope;
+
   const change = (e) => {
     let { id, value } = e.target;
     dispatch({
@@ -26,10 +26,10 @@ const Adsr = () => {
           className="w-full h-2 bg-gray-200 border-2 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
           onChange={change}
         ></input>
-        <p className="text-gray-400 text-md">Delay</p>
+        <p className="text-gray-400 text-md">Decay</p>
         <input
-          id="delay"
-          value={delay}
+          id="decay"
+          value={decay}
           type="range"
           max="1"
           step="0.01"
