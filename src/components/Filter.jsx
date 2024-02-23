@@ -1,8 +1,19 @@
-import PropTypes from "prop-types";
+import { useContext } from "react";
+import { CTX } from "../utils/Store";
 
-const Filter = ({ settings, change, changeType }) => {
-  let { frequency, detune, Q, gain, type } = settings;
+const Filter = () => {
+  let [state, dispatch] = useContext(CTX);
+  let { frequency, detune, Q, gain, type } = state.filterSettings;
 
+  const change = (e) => {
+    let { id, value } = e.target;
+    dispatch({ type: "CHANGE_FILTER", payload: { id, value } });
+  };
+
+  const changeType = (e) => {
+    let { id } = e.target;
+    dispatch({ type: "CHANGE_FILTER_TYPE", payload: { id } });
+  };
   return (
     <div>
       <p className="text-gray-400 mt-2 text-md">Frequency</p>
@@ -102,13 +113,6 @@ const Filter = ({ settings, change, changeType }) => {
       </div>
     </div>
   );
-};
-Filter.propTypes = {
-  change: PropTypes.func.isRequired,
-  settings: PropTypes.object.isRequired,
-  detune: PropTypes.number,
-  frequency: PropTypes.number,
-  changeType: PropTypes.func,
 };
 
 export default Filter;

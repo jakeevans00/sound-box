@@ -7,12 +7,8 @@
   line-height: 1.5;
   font-weight: 400;
 
-  background: rgb(255, 255, 255);
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(0, 0, 0, 1) 39%
-  );
+  background-color: black;
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
