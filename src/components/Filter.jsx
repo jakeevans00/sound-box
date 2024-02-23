@@ -64,7 +64,8 @@ const Filter = () => {
           ></input>
         </>
       )}
-      <div className="mt-2">
+
+      <div className="mt-4 flex flex-wrap justify-center">
         <button
           id="lowpass"
           onClick={changeType}

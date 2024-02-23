@@ -5,12 +5,18 @@ import { CTX } from "../utils/Store";
 
 const Keyboard = () => {
   const [, updateState] = react.useContext(CTX);
+  const [isMobile] = react.useState(window.innerWidth < 768);
 
   useEffect(() => {
     // eslint-disable-next-line no-unused-vars
+    let keyWidth = 449;
+    if (isMobile) {
+      keyWidth = 330;
+    }
+
     const keyboard = new QwertyHancock({
       id: "keyboard",
-      width: 449,
+      width: keyWidth,
       height: 110,
       octaves: 2,
       startNote: "C4",

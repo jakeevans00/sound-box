@@ -18,7 +18,7 @@ const Oscillator = () => {
 
   return (
     <div>
-      <p className="text-gray-400 mt-2 text-md">Detune</p>
+      <p className="text-gray-400 mt-2 text-sm md:text-md">Detune</p>
       <input
         id="detune"
         value={detune}
@@ -28,12 +28,12 @@ const Oscillator = () => {
         className="w-full h-2 bg-gray-200 border-2 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
         onChange={(e) => change(e)}
       ></input>
-      <p className="text-gray-400 mt-2 text-md">Select Type</p>
-      <div className="m">
+      <p className="text-gray-400 mt-2 text-sm md:text-md">Select Type</p>
+      <div className="mt-2">
         <button
           id="sine"
           onClick={changeType}
-          className={`border-2 border-white rounded-sm p-1 ${
+          className={`border-2 border-white text-xs md:text-base rounded-sm   p-1 ${
             type === "sine" && "bg-amber-900"
           }`}
         >
@@ -42,7 +42,7 @@ const Oscillator = () => {
         <button
           id="triangle"
           onClick={changeType}
-          className={`border-2 border-white rounded-sm p-1 ${
+          className={`border-2 border-white text-xs md:text-base rounded-sm p-1 ${
             type === "triangle" && "bg-amber-900"
           }`}
         >
@@ -51,7 +51,7 @@ const Oscillator = () => {
         <button
           id="square"
           onClick={changeType}
-          className={`border-2 border-white rounded-sm p-1 ${
+          className={`border-2 border-white  text-xs md:text-base rounded-sm p-1 ${
             type === "square" && "bg-amber-900"
           }`}
         >
@@ -60,7 +60,7 @@ const Oscillator = () => {
         <button
           id="sawtooth"
           onClick={changeType}
-          className={`border-2 border-white rounded-sm p-1 ${
+          className={`border-2 border-white text-xs md:text-base rounded-sm p-1 ${
             type === "sawtooth" && "bg-amber-900"
           }`}
         >

@@ -9,12 +9,12 @@ export default function App() {
   return (
     <>
       <div className="">
-        <div className="flex flex-col justify-center text-white py-6 px-12">
+        <div className="flex flex-col justify-center text-white py-6">
           <Header />
           <Hero />
           <div className="bg-black-900 flex items-center justify-center p-6">
-            <div className="p-4 w-2/3 min-w-[500px] bg-amber-900 rounded-lg">
-              <div className="bg-black flex flex-col items-center px-12 pt-2 pb-6 gap-2">
+            <div className="p-4 w-2/3 min-w-80 md:min-w-[500px] bg-amber-900 rounded-lg">
+              <div className="bg-black flex flex-col items-center px-4 md:px-12 pt-2 pb-6 gap-2">
                 <p className="text-gray-600 text-xl">Oscillator</p>
                 <Oscillator />
                 <p className="text-gray-600 text-xl mt-2">Filter</p>
